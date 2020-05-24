@@ -19,8 +19,7 @@ add_marker and pick_object communicate using advertise (/robot_state). Odomotry 
 
 ## c. RViz :
   We also created another rviz file to have marker subsribe. The location of modified file is at 
-  "src>turtlebot_interactions>turtlebot_rviz_launchers>rviz/viewNavigation.rviz" and corresponding launch file is at
-   "src>turtlebot_interactions>turtlebot_rviz_launchers>launch/view_Navigation_HSR.launch
+  "src/rvizConfig/viewNavigation.rviz"
    
  
 ## d. Script:
