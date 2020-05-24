@@ -23,14 +23,23 @@ void checkRobotState(const nav_msgs::Odometry::ConstPtr& msg)
     atDropoff = true;
 }
 
+void robotState(const std_msgs::UInt8::ConstPtr& msg)
+{
+  uint8_t state = msg->data;
+  if(state==1)
+    atPickup = true;
+  else if(state==2) 
+    atDropoff = true; 
+}
+
 int main( int argc, char** argv )
 {
   ros::init(argc, argv, "add_markers");
   ros::NodeHandle n;
   ros::Rate r(1);
   ros::Publisher marker_pub = n.advertise<visualization_msgs::Marker>("visualization_marker", 1);
-  ros::Subscriber sub = n.subscribe("odom", 1000, checkRobotState);
-  //ros::Subscriber pick_sub = n.subscribe("/robot_state", 2, checkRobotState);
+  //ros::Subscriber sub = n.subscribe("odom", 1000, checkRobotState);
+  ros::Subscriber pick_sub = n.subscribe("/robot_state", 2, robotState);
 
   // Set our initial shape type to be a cube
   uint32_t shape = visualization_msgs::Marker::CUBE;
@@ -94,7 +103,7 @@ int main( int argc, char** argv )
      }
      else if(pickedUp == false && atPickup)
      {
-	ros::Duration(2.0).sleep();
+	//ros::Duration(2.0).sleep();
 	marker.action = visualization_msgs::Marker::DELETE;
         marker_pub.publish(marker);
         pickedUp = true;
