@@ -1,5 +1,5 @@
-cmake_minimum_required(VERSION 3.0.2)
-project(add_markers)
+cmake_minimum_required(VERSION 2.8.3)
+project(add_markers_old)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 # add_compile_options(-std=c++11)
@@ -10,7 +10,6 @@ project(add_markers)
 find_package(catkin REQUIRED COMPONENTS
   roscpp
   visualization_msgs
-  std_msgs
 )
 
 ## System dependencies are found with CMake's conventions
@@ -104,7 +103,7 @@ find_package(catkin REQUIRED COMPONENTS
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
 #  INCLUDE_DIRS include
-#  LIBRARIES add_markers
+#  LIBRARIES add_markers_old
 #  CATKIN_DEPENDS roscpp visualization_msgs
 #  DEPENDS system_lib
 )
@@ -122,7 +121,7 @@ include_directories(
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
-#   src/${PROJECT_NAME}/add_markers.cpp
+#   src/${PROJECT_NAME}/add_markers_old.cpp
 # )
 
 ## Add cmake target dependencies of the library
@@ -133,7 +132,7 @@ include_directories(
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
-add_executable(${PROJECT_NAME} src/add_markers.cpp)
+ add_executable(${PROJECT_NAME} src/add_markers_old.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -146,9 +145,9 @@ add_executable(${PROJECT_NAME} src/add_markers.cpp)
 # add_dependencies(${PROJECT_NAME}_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
- target_link_libraries(${PROJECT_NAME}
-   ${catkin_LIBRARIES}
- )
+target_link_libraries(${PROJECT_NAME}
+  ${catkin_LIBRARIES}
+)
 
 #############
 ## Install ##
@@ -159,7 +158,7 @@ add_executable(${PROJECT_NAME} src/add_markers.cpp)
 
 ## Mark executable scripts (Python etc.) for installation
 ## in contrast to setup.py, you can choose the destination
-# catkin_install_python(PROGRAMS
+# install(PROGRAMS
 #   scripts/my_python_script
 #   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 # )
@@ -197,7 +196,7 @@ add_executable(${PROJECT_NAME} src/add_markers.cpp)
 #############
 
 ## Add gtest based cpp test target and link libraries
-# catkin_add_gtest(${PROJECT_NAME}-test test/test_add_markers.cpp)
+# catkin_add_gtest(${PROJECT_NAME}-test test/test_add_markers_old.cpp)
 # if(TARGET ${PROJECT_NAME}-test)
 #   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
 # endif()
