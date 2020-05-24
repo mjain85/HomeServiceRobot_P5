@@ -17,9 +17,14 @@ The following steps were taken:
 - pick_objects : The package is responsible to move the robot at 2 different location.
 add_marker and pick_object communicate using advertise (/robot_state). Odomotry message was also added but some uncertinity in location cause some confusion.
 
-## RViz :
+## c. RViz :
   We also created another rviz file to have marker subsribe. The location of modified file is at 
   "src>turtlebot_interactions>turtlebot_rviz_launchers>rviz/viewNavigation.rviz" and corresponding launch file is at
    "src>turtlebot_interactions>turtlebot_rviz_launchers>launch/view_Navigation_HSR.launch
    
  
+## d. Script:
+- test_slam.sh : To produce the map using gmapping slam
+- test_navigation.sh : to test navigation to validate the map create using slam in previous step
+- add_marker.sh : to isualize the marker without navigation
+- home_service.sh : Full navigation with path planning
